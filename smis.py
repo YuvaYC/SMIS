@@ -1,29 +1,25 @@
-print("		Mahesh PU College - Student Management System")
-print('''
-type \"help\" for more information\"
-''')
-while True:
-	menu = input(">")
-	if menu == "new":
-		name = input("Enter student's name: ")
-		roll_no = int(input("Enter student's Roll Number: "))
-		cls = int(input("Enter student's class(11/12): "))
-		batch = input("Enter student's batch: ")
-		adrs = input("Enter student's address: ")
-		city = input("Enter student's city: ")
-		pincode = int(input("Enter student's pincode: "))
-		contact = int(input("Enter student's Parent's/Guardian's Contact Number: "))
+def new():
+	name = input("Enter student's name: ")
+	roll_no = int(input("Enter student's Roll Number: "))
+	cls = int(input("Enter student's class(11/12): "))
+	batch = input("Enter student's batch: ")
+	adrs = input("Enter student's address: ")
+	city = input("Enter student's city: ")
+	pincode = int(input("Enter student's pincode: "))
+	contact = int(input("Enter student's Parent's/Guardian's Contact Number: "))
 
-		print(f"""
-		\t MAHESH PU COLLEGE
-		Student Name: {name} \t Roll No.: {roll_no}
-		Class: {cls} \t \t Batch: {batch}
-		Address: {adrs}
-		City: {city} \t \t Pin Code: {pincode}
-		Parent's/Guardian's Contact No.: {contact}
-		""")
-	elif menu == "marks":
-		marks = input("marks>")
+	print(f"""
+	\t MAHESH PU COLLEGE
+	Student Name: {name} \t Roll No.: {roll_no}
+	Class: {cls} \t \t Batch: {batch}
+	Address: {adrs}
+	City: {city} \t \t Pin Code: {pincode}
+	Parent's/Guardian's Contact No.: {contact}
+	""")
+
+def marks():
+	marks = input("marks>")
+	while True: 
 		if marks == "add":
 			name = input("Enter student's name: ")
 			phy = int(input("Physics: "))
@@ -43,16 +39,45 @@ while True:
 			Total = {total}/300 --- {pcent}%
 			Grade = {grade}
 			""")
-	elif menu == "help":
-		print("""
-		new\t\t\t add a new student
-		marks\t\t\t operations related to marks of students
+		elif menu == "help":
+			print("""
+			new\t\t\t add a new student
+			marks\t\t\t operations related to marks of students
 		
-		marks:
-		add\t\t\t add marks of a student
+			marks:
+			add\t\t\t add marks of a student
+				
+			help\t\t\t shows all commands
+			""")
+		else: break
+
+def attendance():
+	while True:
+		pre = input("Enter the number of days present: ")
 		
-		help\t\t\t shows all commands
-		""")
+		if pre.lower() == "exit":
+			break
+		elif pre == '':
+			continue
+		working_days = int(pre)/24
+		if working_days >= 0.78:
+			print("The student is a defaulter")
+		else:
+			print("The student is short of attendance")
+			
+
+print("		Mahesh PU College - Student Management System")
+print('''
+type \"help\" for more information\"
+''')
+while True:
+	menu = input(">")
+	if menu.lower() == "new":
+		new()
+	elif menu.lower() == "marks":
+		marks()
+	elif menu.lower() == "attendance":
+		attendance()
 	else:
 		break
 
